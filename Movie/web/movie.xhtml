@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:form id="form">
+        <h:head>
+
+	</h:head>
+	
+        <h:body>
+        <p:growl id="messages" showDetail="true"/>
+            <h4>Name</h4>  
+            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.title}"/>
+            <h4>Description</h4>
+            <p:inputTextarea rows="5" cols="50" value="#{movieBean.movie.plot}"/>
+            <h4>Director</h4>
+            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.director}"/>
+            <h4>Year</h4>
+            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.year}"/>
+<!--            <p:calendar value="#{movieBean.movie.year}" effect="explode"/>-->
+            <h4>Rating</h4>
+            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.rating}"/>
+<!--            <p:rating value="#{movieBean.movie.rating}" />-->
+            <p:commandButton value="Submit" actionListener="#{movieBean.save}"/>
+            <br />
+        </h:body>
+    </h:form>
+</html>
+
