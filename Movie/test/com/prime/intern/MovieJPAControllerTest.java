@@ -39,11 +39,8 @@ public class MovieJPAControllerTest {
     @Test
     public void shouldPersistMovie(){
         Movie m = new Movie();
-        Movie s = new Movie();
-        m.setTitle("Godfather");
+        m.setTitle("Matrix");
         controller.create(m);
-        s.setTitle("fanskşfasfsa");
-        controller.create(s);
         
         assertNotNull("ID should not be null", m.getId());
     }

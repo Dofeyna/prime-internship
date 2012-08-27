@@ -5,6 +5,7 @@
 package com.primeInternship.movie;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,9 +34,9 @@ public class Movie implements Serializable {
     @Column(name="plot")
     private String plot;
     @Column(name="yearr")
-    private String year;
+    private int year;
     @Column(name="rating")
-    private String rating;
+    private double rating;
 
     public Long getId() {
         return id;
@@ -76,19 +77,19 @@ public class Movie implements Serializable {
         this.plot = plot;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
-    public String getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
     

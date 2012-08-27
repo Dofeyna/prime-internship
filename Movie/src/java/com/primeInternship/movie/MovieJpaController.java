@@ -4,11 +4,6 @@
  */
 package com.primeInternship.movie;
 
-/**
- *
- * @author Tufan Turkaslan
- */
-import com.primeinternship.movie.exceptions.*;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,11 +13,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.UserTransaction;
+
 public class MovieJpaController implements Serializable{
     
 
-    private UserTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public MovieJpaController() {
@@ -47,7 +41,7 @@ public class MovieJpaController implements Serializable{
         }
     }
     
-    public void edit(Movie movie) throws NonexistentEntityException, Exception {
+    public void edit(Movie movie) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -56,20 +50,14 @@ public class MovieJpaController implements Serializable{
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
-            if (msg == null || msg.length() == 0) {
-                Long id = movie.getId();
-                if (findMovie(id) == null) {
-                    throw new NonexistentEntityException( "The customer with id " + id + " no longer exists.");
-                }
-            }
-            throw ex;
+            ex.printStackTrace();
         } finally {
             if (em != null) {
                em.close();
             }
         }
     }
-    public void destroy(Long id) throws NonexistentEntityException {
+    public void destroy(Long id) {
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -77,11 +65,11 @@ public class MovieJpaController implements Serializable{
             Movie movie;
             try {
                 movie = em.getReference(Movie.class, id);
-                movie.getId();
+                em.remove(movie);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The customer with id " + id + " no longer exists.", enfe);
+               enfe.printStackTrace();
             }
-            em.remove(movie);
+            
             em.getTransaction().commit();
         } finally {
             if (em != null) {

@@ -3,28 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:form id="form">
-        <h:head>
-
-	</h:head>
-	
-        <h:body>
-        <p:growl id="messages" showDetail="true"/>
-            <h4>Name</h4>  
-            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.title}"/>
-            <h4>Description</h4>
-            <p:inputTextarea rows="5" cols="50" value="#{movieBean.movie.plot}"/>
-            <h4>Director</h4>
-            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.director}"/>
-            <h4>Year</h4>
-            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.year}"/>
-<!--            <p:calendar value="#{movieBean.movie.year}" effect="explode"/>-->
-            <h4>Rating</h4>
-            <p:inputTextarea rows="1" cols="50" value="#{movieBean.movie.rating}"/>
-<!--            <p:rating value="#{movieBean.movie.rating}" />-->
-            <p:commandButton value="Submit" actionListener="#{movieBean.save}"/>
-            <br />
-        </h:body>
-    </h:form>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:fieldset legend="#{mb.movie.title}">
+            <p:panelGrid columns="2" style="margin-bottom:10px">
+                <h:outputText value="Info"/>
+                <h:outputText value="#{mb.movie.plot}"/>
+                <h:outputText value="Director"/>
+                <h:outputText value="#{mb.movie.director}"/>
+                <h:outputText value="Year"/>
+                <h:outputText value="#{mb.movie.year}"/>
+                <h:outputText value="Rating"/>
+                <h:outputText value="#{mb.movie.rating}"/>
+            </p:panelGrid>
+        </p:fieldset>
+    </h:body>
 </html>
 
