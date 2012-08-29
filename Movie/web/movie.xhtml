@@ -3,22 +3,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <p:fieldset legend="#{mb.movie.title}">
-            <p:panelGrid columns="2" style="margin-bottom:10px">
-                <h:outputText value="Info"/>
-                <h:outputText value="#{mb.movie.plot}"/>
-                <h:outputText value="Director"/>
-                <h:outputText value="#{mb.movie.director}"/>
-                <h:outputText value="Year"/>
-                <h:outputText value="#{mb.movie.year}"/>
-                <h:outputText value="Rating"/>
-                <h:outputText value="#{mb.movie.rating}"/>
+    <h:form id="form">
+        <h:head>
+            <title>Facelet Title</title>
+        </h:head>
+        <h:body>
+            <p:panelGrid columns="2">
+            <p:fieldset legend="#{mv.movie.title}">
+                <p:panelGrid columns="2" style="margin-bottom:10px">
+                    <h:outputText value="Info"/>
+                    <h:outputText value="#{mv.movie.plot}"/>
+                    <h:outputText value="Director"/>
+                    <h:outputText value="#{mv.movie.director}"/>
+                    <h:outputText value="Year"/>
+                    <h:outputText value="#{mv.movie.year}"/>
+                    <h:outputText value="Rating"/>
+                    <h:outputText value="#{mv.movie.rating}"/>
+                </p:panelGrid>
+            </p:fieldset>
+                
+            <p:commandButton value="Back" ajax="false" action="index" />
+            <br />
             </p:panelGrid>
-        </p:fieldset>
-    </h:body>
+        </h:body>
+    </h:form>
 </html>
 

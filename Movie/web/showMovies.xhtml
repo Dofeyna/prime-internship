@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:form id="form">
+        <h:head>
+
+        </h:head>
+
+        <h:body>
+            <p:panelGrid columns="2">
+            <p:accordionPanel value="#{mb.movies}" var="movie">
+                <p:tab title="#{movie.title}">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <p:graphicImage value="/images/barca/#{player.photo}" />
+
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <h:outputText value="Description " />
+                            <h:outputText value="#{movie.plot}" style="font-weight: bold"/>
+
+                            <h:outputText value="Director " />
+                            <h:outputText value="#{movie.director}" style="font-weight: bold"/>
+
+                            <h:outputText value="Year " />
+                            <h:outputText value="#{movie.year}" style="font-weight: bold"/>
+
+                            <h:outputText value="Rating " />
+                            <h:outputText value="#{movie.rating}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </h:panelGrid>
+                </p:tab>
+            </p:accordionPanel>
+            
+                <p:commandButton value="Back" ajax="false" action="index" />
+            </p:panelGrid>    
+        </h:body>
+    </h:form>
+
+</html>
+

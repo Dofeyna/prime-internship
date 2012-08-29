@@ -11,16 +11,16 @@
         <h:body>
         <p:growl id="messages" showDetail="true"/>
             <h4>Name</h4>  
-            <p:inputTextarea rows="1" cols="50" value="#{mb.movie.title}"/>
+            <p:inputTextarea rows="1" cols="50" value="#{mv.movie.title}"/>
             <h4>Description</h4>
-            <p:inputTextarea rows="5" cols="50" value="#{mb.movie.plot}"/>
+            <p:inputTextarea rows="5" cols="50" value="#{mv.movie.plot}"/>
             <h4>Director</h4>
-            <p:inputTextarea rows="1" cols="50" value="#{mb.movie.director}"/>
+            <p:inputTextarea rows="1" cols="50" value="#{mv.movie.director}"/>
             <h4>Year</h4>
-            <p:inputTextarea rows="1"  cols="4" value="#{mb.movie.year}" />
+            <p:inputMask value="#{mv.movie.year}" mask="9999"/> 
             <h4>Rating</h4>
-            <p:rating value="#{mb.movie.rating}" />
-            <p:commandButton actionListener="#{mb.save}" value="Submit" ajax="false"  action="movie" />
+            <p:rating value="#{mv.movie.rating}" />
+            <p:commandButton actionListener="#{mv.save}" value="Submit" ajax="false"  action="movie" />
             <br />
         </h:body>
     </h:form>
