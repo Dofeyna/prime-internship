@@ -2,8 +2,7 @@ package com.prime.movies.view;
 
 import com.prime.movies.domain.Movie;
 import com.prime.movies.repository.MovieRepository;
-import java.io.Serializable;;
-import java.util.List;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;

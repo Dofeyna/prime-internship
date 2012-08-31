@@ -2,27 +2,40 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:form id="form">
-        <h:head>
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:form id="form">
+    <h:head>
+        
+    </h:head>
+    <h:body>
+	<p:panel id="panel" header="New Movie" style="margin-bottom:10px;">
+		<p:messages id="messages" />
+		<h:panelGrid columns="3">
+			<h:outputLabel for="title" value="Title: *" />
+                        <p:inputText id="title" value="#{mv.movie.title}" required="true" label="Title">
+				<f:validateLength minimum="2" />
+			</p:inputText>
+			<p:message for="title" />
+			
+			<h:outputLabel for="plot" value="Plot: *" />
+                        <p:inputText id="plot" value="#{mv.movie.plot}" required="true" label="Plot"/>
+			<p:message for="plot" />
+		</h:panelGrid>
+	</p:panel>
 
-	</h:head>
+    <p:commandButton value="Submit" update="panel,display" id="ajax" actionListener="#{mv.save}" />
 	
-        <h:body>
-        <p:growl id="messages" showDetail="true"/>
-            <h4>Name</h4>  
-            <p:inputTextarea rows="1" cols="50" value="#{mv.movie.title}"/>
-            <h4>Description</h4>
-            <p:inputTextarea rows="5" cols="50" value="#{mv.movie.plot}"/>
-            <h4>Director</h4>
-            <p:inputTextarea rows="1" cols="50" value="#{mv.movie.director}"/>
-            <h4>Year</h4>
-            <p:inputMask value="#{mv.movie.year}" mask="9999"/> 
-            <h4>Rating</h4>
-            <p:rating value="#{mv.movie.rating}" />
-            <p:commandButton actionListener="#{mv.save}" value="Submit" ajax="false"  action="movie" />
-            <br />
-        </h:body>
+	<p:panel id="display" header="Information" style="margin-top:10px;">
+		<h:panelGrid columns="2">
+			<h:outputText value="Title: " />
+                        <h:outputText value="#{mv.movie.title}" />
+			
+			<h:outputText value="Plot: " />
+                        <h:outputText value="#{mv.movie.plot}" />
+		</h:panelGrid>
+	</p:panel>
+    </h:body>
     </h:form>
 </html>
 

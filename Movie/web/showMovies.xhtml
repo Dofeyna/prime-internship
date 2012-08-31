@@ -10,10 +10,9 @@
 
         <h:body>
             <p:panelGrid columns="2">
-            <p:accordionPanel value="#{mb.movies}" var="movie">
+                <p:accordionPanel value="#{mvs.movies}" var="movie">
                 <p:tab title="#{movie.title}">
                     <h:panelGrid columns="2" cellpadding="10">
-                        <p:graphicImage value="/images/barca/#{player.photo}" />
 
                         <h:panelGrid columns="2" cellpadding="10">
                             <h:outputText value="Description " />
