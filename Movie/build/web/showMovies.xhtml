@@ -3,38 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+  
     <h:form id="form">
         <h:head>
-
         </h:head>
+        <h:body>  
+            <p:layout style="min-width:440px;min-height:680px;" id="layout">
+                <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
+                    <h:panelGroup>
+                        <div style="text-align: center"> <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/></div>
+                    </h:panelGroup>
+                </p:layoutUnit>
+                <p:layoutUnit position="west" size="173" id="left">
+                    <p:menu>
+                        <p:submenu label="Movies" style="font-size: x-large">
+                            <p:menuitem value="Show" outcome="showMovies"/>
+                            <p:menuitem value="Add" outcome="newMovie" />
+<!--                            <p:menuitem value="Edit" outcome="editMovie" />
+                            <p:menuitem value="Delete" />-->
+                        </p:submenu>
+                    </p:menu>
+                </p:layoutUnit>
+                <p:layoutUnit position="center" id="center">                      
+                            <p:panelGrid columns="2">
+                                <p:accordionPanel value="#{mvs.movies}" var="movie" >
+                                    <p:tab title="#{movie.title}">
+                                        <h:panelGrid columns="2" cellpadding="10">
+                                            <h:panelGrid columns="2" cellpadding="10">
+                                                <h:outputText value="Description " />
+                                                <h:outputText value="#{movie.plot}" style="font-weight: bold"/>
 
-        <h:body>
-            <p:panelGrid columns="2">
-                <p:accordionPanel value="#{mvs.movies}" var="movie">
-                <p:tab title="#{movie.title}">
-                    <h:panelGrid columns="2" cellpadding="10">
+                                                <h:outputText value="Director " />
+                                                <h:outputText value="#{movie.director}" style="font-weight: bold"/>
 
-                        <h:panelGrid columns="2" cellpadding="10">
-                            <h:outputText value="Description " />
-                            <h:outputText value="#{movie.plot}" style="font-weight: bold"/>
+                                                <h:outputText value="Year " />
+                                                <h:outputText value="#{movie.year}" style="font-weight: bold"/>
 
-                            <h:outputText value="Director " />
-                            <h:outputText value="#{movie.director}" style="font-weight: bold"/>
-
-                            <h:outputText value="Year " />
-                            <h:outputText value="#{movie.year}" style="font-weight: bold"/>
-
-                            <h:outputText value="Rating " />
-                            <h:outputText value="#{movie.rating}" style="font-weight: bold"/>
-                        </h:panelGrid>
-                    </h:panelGrid>
-                </p:tab>
-            </p:accordionPanel>
-            
-                <p:commandButton value="Back" ajax="false" action="index" />
-            </p:panelGrid>    
+                                                <h:outputText value="Rating " />
+                                                <h:outputText value="#{movie.rating}" style="font-weight: bold"/>
+                                            </h:panelGrid>
+                                        </h:panelGrid>
+                                    </p:tab>
+                                </p:accordionPanel>
+                            </p:panelGrid>                                                                 
+                </p:layoutUnit>
+            </p:layout>
         </h:body>
     </h:form>
-
 </html>
-

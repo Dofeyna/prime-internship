@@ -16,6 +16,7 @@ import javax.persistence.Table;
  *
  * @author Tufan Turkaslan
  */
+
 @Entity
 @Table(name="movie")
 public class Movie implements Serializable {
@@ -35,7 +36,7 @@ public class Movie implements Serializable {
     @Column(name="yearr")
     private int year;
     @Column(name="rating")
-    private double rating;
+    private Integer rating;
 
     public Long getId() {
         return id;
@@ -84,11 +85,11 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
-    public double getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
     

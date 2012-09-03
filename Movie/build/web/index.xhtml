@@ -1,46 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui">
     <h:form id="form">
         <h:head>
-            <h:outputText value="#{mv.buttonValue}"/>
-         </h:head>
-            
-            <h:body>  
-                <p:layout style="min-width:440px;min-height:680px;" id="layout">
 
-                    <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
-                        <h:panelGroup>
-                            <div style="text-align: center"> 
-                                <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/>
-                            </div>
-                        </h:panelGroup>
-                    </p:layoutUnit>
+        </h:head>
 
-                    <p:layoutUnit position="west" size="173" id="left">
-                        <p:menu>
-                            <p:submenu label="Movies" style="font-size: x-large">
-                                <p:menuitem id="showMovies" value="See" ajax="false" actionListener="#{mv.buttonValue}" update="center"/>
-                                <p:menuitem id="newMovie" value="Add" ajax="false" actionListener="#{mv.buttonValue}" update="center"/>
-                                <p:menuitem id="editMovie" value="Edit" ajax="false" actionListener="#{mv.buttonValue}" update="center"/>
-                                <p:menuitem id="b4" value="Delete" ajax="false" actionListener="#{mv.buttonValue}" update="center"/>
-                            </p:submenu>
+        <h:body>  
+            <p:layout style="min-width:440px;min-height:680px;" id="layout">
 
-                        </p:menu>
+                <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
+                    <h:panelGroup>
+                        <div style="text-align: center"> <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/></div>
+                    </h:panelGroup>
+                </p:layoutUnit>
 
-                    </p:layoutUnit>
+                <p:layoutUnit position="west" size="173" id="left">
+                    <p:menu>
+                        <p:submenu label="Movies" style="font-size: x-large">
+                            <p:menuitem value="Show" outcome="showMovies" />
+                            <p:menuitem value="Add" outcome="newMovie"/>
+<!--                            <p:menuitem value="Edit" outcome="editMovie"/>
+                            <p:menuitem value="Delete" />-->
+                        </p:submenu>
 
-                    <p:layoutUnit position="center" id="center">
-                        <h:form style="text-align: center"> 
-                            <ui:include src="#{mv.buttonValue}" />
-                        </h:form>
-                    </p:layoutUnit>
+                    </p:menu>
 
-                </p:layout>
-            </h:body>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" id="center">
+                    <h:form style="text-align: center"> 
+
+                    </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:body>
     </h:form>
 </html>
+
