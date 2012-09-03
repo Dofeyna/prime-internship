@@ -19,12 +19,26 @@
 			<p:message for="title" />
 			
 			<h:outputLabel for="plot" value="Plot: *" />
-                        <p:inputText id="plot" value="#{mv.movie.plot}" required="true" label="Plot"/>
+                        <p:inputTextarea id="plot" value="#{mv.movie.plot}" required="true" label="Plot" rows="10" cols="50"/>
 			<p:message for="plot" />
+                        
+                        <h:outputLabel for="director" value="Director: *" />
+                        <p:inputText id="director" value="#{mv.movie.director}" required="true" label="Director"/>
+                        <p:message for="director" />
+                        
+                        <h:outputLabel for="year" value="Year: *" />
+                        <p:inputText id="year" value="#{mv.movie.year}" required="true" label="Year" maxlength="4"/>
+                        <p:message for="year" />
+                        
+                        <h:outputText value="Rating:" />
+                        <p:rating value="#{mv.movie.rating}"/>
+                        
+                        
 		</h:panelGrid>
 	</p:panel>
 
     <p:commandButton value="Submit" update="panel,display" id="ajax" actionListener="#{mv.save}" />
+    <p:commandButton value="Show Movies" ajax="false" action="showMovies" />
 	
 	<p:panel id="display" header="Information" style="margin-top:10px;">
 		<h:panelGrid columns="2">
@@ -33,6 +47,15 @@
 			
 			<h:outputText value="Plot: " />
                         <h:outputText value="#{mv.movie.plot}" />
+                        
+                        <h:outputText value="Director " />
+                        <h:outputText value="#{mv.movie.director}" />
+                        
+                        <h:outputText value="Year: " />
+                        <h:outputText value="#{mv.movie.year}" />
+                        
+                        <h:outputText value="Rating: "/>
+                        <p:rating value="#{mv.movie.rating}" readonly="true" disabled="true"/>
 		</h:panelGrid>
 	</p:panel>
     </h:body>
