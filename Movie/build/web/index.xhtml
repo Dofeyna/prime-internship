@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
@@ -10,22 +10,28 @@
             <h:body>  
                 <p:layout style="min-width:440px;min-height:680px;" id="layout">
 
-                    <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
+                    <p:layoutUnit id="top" size="60" position="north"
+                                  collapsible="true" resizable="false" >
                         <h:panelGroup>
-                            <div style="text-align: center"> 
-                                <h:outputText value="-Movie Program-" style="font-size: xx-large;background: darkgrey " rendered="true"/>
-                            </div>
+                            <div style="text-align: center"> <h:outputText
+                                    value="-Movie Program-" style="font-size: xx-large;
+                                    background: darkgrey " rendered="true"/></div>
                         </h:panelGroup>
                     </p:layoutUnit>
 
                     <p:layoutUnit position="west" size="173" id="left">
                         <p:menu>
                             <p:submenu label="Movies" style="font-size: x-large">
-                                <p:menuitem value="See" ajax="false" action="showMovies" />
-                                <p:menuitem value="Add" ajax="false" action="newMovie"/>
-                                <ui:include src="newMovie.xhtml" />
-                                <p:menuitem value="Edit" ajax="false" />
-                                <p:menuitem value="Delete" ajax="false" />
+                                <p:menuitem id="1" value="See" ajax="false" actionListener="#{mv.pageSelection}" update="center"/>
+                                <p:menuitem id="2" value="Add" ajax="false"
+                                            actionListener="#{mv.pageSelection}"
+                                            update="center"/>
+                                <p:menuitem id="3" value="Edit" ajax="false"
+                                            actionListener="#{mv.pageSelection}"
+                                            update="center"/>
+                                <p:menuitem id="4" value="Delete" ajax="false"
+                                            actionListener="#{mv.pageSelection}"
+                                            update="center"/>
                             </p:submenu>
 
                         </p:menu>
@@ -34,7 +40,7 @@
 
                     <p:layoutUnit position="center" id="center">
                         <h:form style="text-align: center"> 
-                            <ui:include src="showMovies.xhtml" />
+                            <ui:include src="#{mv.pageSelection}" />
                         </h:form>
                     </p:layoutUnit>
 

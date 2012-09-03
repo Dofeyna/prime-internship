@@ -2,6 +2,7 @@ package com.prime.movies.view;
 
 import com.prime.movies.domain.Movie;
 import com.prime.movies.repository.MovieRepository;
+import java.awt.event.ActionEvent;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +16,7 @@ public class MovieView implements Serializable{
     
     @EJB
     private MovieRepository movieRepository;
+    private int buttonValue;
 
     public MovieView() {
         movie = new Movie();
@@ -28,7 +30,23 @@ public class MovieView implements Serializable{
         this.movie = movie;
     }
     
+    
     public void save() {
         movieRepository.persist(movie);
     }
+    public String pageSelection( ActionEvent e){
+        buttonValue = e.getID();
+        
+        if( buttonValue == 1) {
+            return "showMovies";
+        }
+        else if( buttonValue == 2) {
+            return "newMovie";
+        }
+        else if( buttonValue == 3) {
+            return "editMovie";
+        }
+        return null;
+        
+   }
 }
