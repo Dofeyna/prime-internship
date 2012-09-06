@@ -1,103 +1,67 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-    <h:form id="form">
-        <h:head>
-            
-        </h:head>
-        <h:body>  
-            <p:layout style="min-width:440px;min-height:680px;" id="layout">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="./template.xhtml">
+    <ui:define name="content">
+        <h:form id="form"> 
+            <p:layoutUnit position="center" id="center">
+                <h:form style="text-align: center"> 
+                    <p:panel id="panel" header="New Movie" style="margin-bottom:30px;">
+                        <p:messages id="messages" />
+                        <h:panelGrid columns="3">
+                            <h:outputLabel for="title" value="Title: *" />
+                            <p:inputText id="title" value="#{mv.movie.title}" required="true" label="Title"/>
+                            <p:message for="title" />
+                            <d/>
+                            <p:separator/>
+                            <p:message for="plot" />
+                            <h:outputLabel for="plot" value="Plot: *" />
+                            <p:inputTextarea id="plot" value="#{mv.movie.plot}" required="true" label="Plot" rows="10" cols="50" maxlength="255"  counter="counter" counterTemplate="{0} characters remaining."/>
+                            <h:outputText id="counter" />
+                            <d/>
+                            <p:separator/>
+                            <d/>
+                            <h:outputLabel for="director" value="Director: *" />
+                            <p:inputText id="director" value="#{mv.movie.director}" required="true" label="Director"/>
+                            <p:message for="director" />
+                            <d/>
+                            <p:separator/>
+                            <d/>
+                            <h:outputLabel for="year" value="Year: *" />
+                            <p:inputText id="year" value="#{mv.movie.year}" required="true" label="Year" maxlength="4" />
+                            <p:message for="year" />
+                            <d/>
+                            <p:separator/>
+                            <d/>
+                            <h:outputText value="Rating:" />
+                            <p:rating value="#{mv.movie.rating}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:commandButton value="Submit" update="panel,display" id="ajax" actionListener="#{mv.save}" />
+                    <p:panel id="display" header="Information" style="margin-top:10px;">
+                        <h:panelGrid columns="2">
+                            <h:outputText value="Title: " />
+                            <h:outputText value="#{mv.title}" />
 
-                <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
-                    <h:panelGroup>
-                        <div style="text-align: center"> 
-                            <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/>
-                        </div>
-                    </h:panelGroup>
-                </p:layoutUnit>
+                            <h:outputText value="Plot: " />
+                            <h:outputText value="#{mv.plot}" />
 
-                <p:layoutUnit position="west" size="173" id="left">
-                    <p:menu>
-                        <p:submenu label="Movies" style="font-size: x-large">
-                            <p:menuitem value="Show" outcome="showMovies"/>
-                            <p:menuitem value="Add" outcome="newMovie"/>
-<!--                            <p:menuitem value="Edit" outcome="editMovie"/>
-                            <p:menuitem value="Delete" />-->
-                        </p:submenu>
+                            <h:outputText value="Director " />
+                            <h:outputText value="#{mv.director}" />
 
-                    </p:menu>
+                            <h:outputText value="Year: " />
+                            <h:outputText value="#{mv.year}" />
 
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center" id="center">
-                    <h:form style="text-align: center"> 
-                        <h:body>
-                            <p:panel id="panel" header="New Movie" style="margin-bottom:10px;">
-                                <p:messages id="messages" />
-                                <h:panelGrid columns="3">
-                                    <h:outputLabel for="title" value="Title: *" />
-                                    <p:inputText id="title" value="#{mv.movie.title}" required="true" label="Title"/>
-                                    <p:message for="title" />
-                                    <d/>
-                                    <p:separator/>
-                                    <d/>
-                                    <h:outputLabel for="plot" value="Plot: *" />
-                                    <p:inputTextarea id="plot" value="#{mv.movie.plot}" required="true" label="Plot" rows="10" cols="50" maxlength="255"  counter="counter"   
-                                        counterTemplate="{0} characters remaining."/>
-                                    <h:outputText id="counter" />
-                                    <d/>
-                                    <p:separator/>
-                                    <p:message for="plot" />
-                                    <h:outputLabel for="director" value="Director: *" />
-                                    <p:inputText id="director" value="#{mv.movie.director}" required="true" label="Director"/>
-                                    <p:message for="director" />
-                                    <d/>
-                                    <p:separator/>
-                                    <d/>
-                                    <h:outputLabel for="year" value="Year: *" />
-                                    <p:inputText id="year" value="#{mv.movie.year}" required="true" label="Year" maxlength="4"/>
-                                    <p:message for="year" />
-                                    <d/>
-                                    <p:separator/>
-                                    <d/>
-                                    <h:outputText value="Rating:" />
-                                    <p:rating value="#{mv.movie.rating}"/>
-
-
-                                </h:panelGrid>
-                            </p:panel>
-
-                            <p:commandButton value="Submit" update="panel,display" id="ajax" actionListener="#{mv.save}" />
-
-
-                            <p:panel id="display" header="Information" style="margin-top:10px;">
-                                <h:panelGrid columns="2">
-                                    <h:outputText value="Title: " />
-                                    <h:outputText value="#{mv.title}" />
-
-                                    <h:outputText value="Plot: " />
-                                    <h:outputText value="#{mv.plot}" />
-
-                                    <h:outputText value="Director " />
-                                    <h:outputText value="#{mv.director}" />
-
-                                    <h:outputText value="Year: " />
-                                    <h:outputText value="#{mv.year}" />
-
-                                    <h:outputText value="Rating: "/>
-                                    <p:rating value="#{mv.rating}" disabled="true"/>
-                                </h:panelGrid>
-                            </p:panel>
-                        </h:body>
-                    </h:form>
-                </p:layoutUnit>
-
-            </p:layout>
-        </h:body>
-    </h:form>
-</html>
+                            <h:outputText value="Rating: "/>
+                            <p:rating value="#{mv.rating}" disabled="true"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+            </p:layoutUnit>
+        </h:form> 
+    </ui:define>
+</ui:composition>
 
 
 

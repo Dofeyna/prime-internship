@@ -16,7 +16,6 @@ import javax.persistence.Table;
  *
  * @author Tufan Turkaslan
  */
-
 @Entity
 @Table(name="movie")
 public class Movie implements Serializable {
@@ -38,6 +37,10 @@ public class Movie implements Serializable {
     @Column(name="rating")
     private Integer rating;
 
+    /**
+     *
+     * @return
+     */
     public Long getId() {
         return id;
     }

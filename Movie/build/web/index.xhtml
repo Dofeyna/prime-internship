@@ -2,42 +2,20 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:form id="form">
-        <h:head>
-
-        </h:head>
-
-        <h:body>  
-            <p:layout style="min-width:440px;min-height:680px;" id="layout">
-
-                <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
-                    <h:panelGroup>
-                        <div style="text-align: center"> <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/></div>
-                    </h:panelGroup>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="173" id="left">
-                    <p:menu>
-                        <p:submenu label="Movies" style="font-size: x-large">
-                            <p:menuitem value="Show" outcome="showMovies" />
-                            <p:menuitem value="Add" outcome="newMovie"/>
-<!--                            <p:menuitem value="Edit" outcome="editMovie"/>
-                            <p:menuitem value="Delete" />-->
-                        </p:submenu>
-
-                    </p:menu>
-
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center" id="center">
-                    <h:form style="text-align: center"> 
-
-                    </h:form>
-                </p:layoutUnit>
-
-            </p:layout>
-        </h:body>
+            <h:head>
+            </h:head>
+            
+            <h:body>  
+                <ui:composition template="./template.xhtml">
+                
+                <ui:define name="content">
+                Welcome!
+            </ui:define>
+                    </ui:composition>
+            </h:body>
     </h:form>
 </html>
 

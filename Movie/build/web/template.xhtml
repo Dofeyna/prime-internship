@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css"  />
+    </h:head>
+    
+    <h:body>
+        <div id="top" class="top" style="text-align: center" >
+            <ui:insert name="top" >
+                    <br/>
+                    <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/>
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left" style="text-align: center">
+                <ui:insert name="left">
+                    <p:menu>
+                        <p:submenu label="Movies" style="font-size: x-large">
+                            <p:menuitem value="Home" outcome="index" icon="ui-icon-home"/>
+                            <p:menuitem value="Show" outcome="showMovies" icon="ui-icon-video"/>
+                            <p:menuitem value="Add" outcome="newMovie" icon="ui-icon-plusthick"/>   
+                        </p:submenu>
+                    </p:menu>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+    </h:body>   
+</html>

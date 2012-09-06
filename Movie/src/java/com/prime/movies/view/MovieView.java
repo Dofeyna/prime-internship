@@ -18,7 +18,7 @@ public class MovieView implements Serializable{
     
     private Movie movie;
     private String title, director, plot;
-
+    
     public String getTitle() {
         return title;
     }

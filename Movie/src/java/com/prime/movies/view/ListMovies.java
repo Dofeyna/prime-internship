@@ -20,6 +20,15 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class ListMovies {
     private List <Movie> movies;
+    private Movie selectedMovie;
+
+    public Movie getSelectedMovie() {
+        return selectedMovie;
+    }
+
+    public void setSelectedMovie(Movie selectedMovie) {
+        this.selectedMovie = selectedMovie;
+    }
     
     @EJB
     private MovieRepository movieRepository;

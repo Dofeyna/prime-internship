@@ -1,53 +1,49 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
-  
-    <h:form id="form">
-        <h:head>
-        </h:head>
-        <h:body>  
-            <p:layout style="min-width:440px;min-height:680px;" id="layout">
-                <p:layoutUnit id="top" size="60" position="north" collapsible="true" resizable="false" >
-                    <h:panelGroup>
-                        <div style="text-align: center"> <h:outputText value="-Movie Program-" style="font-size: xx-large; background: darkgrey " rendered="true"/></div>
-                    </h:panelGroup>
-                </p:layoutUnit>
-                <p:layoutUnit position="west" size="173" id="left">
-                    <p:menu>
-                        <p:submenu label="Movies" style="font-size: x-large">
-                            <p:menuitem value="Show" outcome="showMovies"/>
-                            <p:menuitem value="Add" outcome="newMovie" />
-<!--                            <p:menuitem value="Edit" outcome="editMovie" />
-                            <p:menuitem value="Delete" />-->
-                        </p:submenu>
-                    </p:menu>
-                </p:layoutUnit>
-                <p:layoutUnit position="center" id="center">                      
-                            <p:panelGrid columns="2">
-                                <p:accordionPanel value="#{mvs.movies}" var="movie" >
-                                    <p:tab title="#{movie.title}">
-                                        <h:panelGrid columns="2" cellpadding="10">
-                                            <h:panelGrid columns="2" cellpadding="10">
-                                                <h:outputText value="Description " />
-                                                <h:outputText value="#{movie.plot}" style="font-weight: bold"/>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+template="./template.xhtml">  
+    <ui:define name="content">
+        <h:form id="form">
+           <p:dataTable id="movies" var="movie" value="#{mvs.movies}" paginator="true" rows="10" selection="#{mvs.selectedMovie}" rowKey="#{movie.id}" >
+                    <f:facet name="header">
+                        Movies in database
+                    </f:facet>
+                    <p:column selectionMode="single" style="width:18px" />
+                    <p:column headerText="Title">
+                        #{movie.title}
+                    </p:column>
+                     <p:column headerText="Director">
+                        #{movie.director}
+                    </p:column>
+                    <p:column headerText="Year">
+                        #{movie.year}
+                    </p:column>
+                    <p:column headerText="Rating">
+                        #{movie.rating}
+                    </p:column>
+                    <f:facet name="footer">
+                        <p:commandButton id="viewCommand" value="View" icon="ui-icon-search" update=":form:displaySingle" oncomplete="singleMovieDialog.show()"/>
+                        <p:commandButton id="deleteCommand" value="Delete" icon="ui-icon-trash" update=":form:displaySingle" />
+                        <p:commandButton id="editCommand" value="Edit" icon="ui-icon-wrench" update=":form:displaySingle" oncomplete="singleMovieDialog"/>
+                    </f:facet>                         
+                </p:dataTable>   
 
-                                                <h:outputText value="Director " />
-                                                <h:outputText value="#{movie.director}" style="font-weight: bold"/>
+                <p:dialog id="dialog" header="Movie Detail" widgetVar="singleMovieDialog" resizable="false" showEffect="fade" hideEffect="explode">
 
-                                                <h:outputText value="Year " />
-                                                <h:outputText value="#{movie.year}" style="font-weight: bold"/>
+                <h:panelGrid id="displaySingle" columns="2" cellpadding="4">
 
-                                                <h:outputText value="Rating " />
-                                                <h:outputText value="#{movie.rating}" style="font-weight: bold"/>
-                                            </h:panelGrid>
-                                        </h:panelGrid>
-                                    </p:tab>
-                                </p:accordionPanel>
-                            </p:panelGrid>                                                                 
-                </p:layoutUnit>
-            </p:layout>
-        </h:body>
-    </h:form>
-</html>
+                    <h:outputText value="Title:" />
+                    <h:outputText value="#{mvs.selectedMovie.title}" />
+
+                    <h:outputText value="Plot:" />
+                    <h:outputText value="#{mvs.selectedMovie.plot}" />
+
+                    <h:outputText value="Director" />
+                    <h:outputText value="#{mvs.selectedMovie.director}" />
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </ui:define>     
+</ui:composition>
